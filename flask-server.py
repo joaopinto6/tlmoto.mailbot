@@ -6,6 +6,10 @@ from decouple import config
 
 app = Flask(__name__)
 
+@app.route('/')
+def route():
+    return 'Working...'
+
 @app.route('/sendmail', methods=['POST'])
 def send_email():
     email_sender = config('EMAIL_SENDER')
