@@ -132,8 +132,8 @@
     </div>
     <div id="popupOverlay">
         <div id="popupContent">
-            <span class="closeButton" onclick="closePopup()">&times;</span>
-            <p id="popupMessage">waiting...</p>
+            <span id="closeBtn" class="closeButton" onclick="closePopup()"></span>
+            <p id="popupMessage"></p>
         </div>
     </div>
       <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script><script  src="contactos/script_faq.js"></script>
@@ -147,6 +147,8 @@
           // Get the form data
           var formData = new FormData(document.getElementById("contactForm"));
 
+          document.getElementById("popupMessage").innerText = "Waiting...";
+          document.getElementById("closeBtn").innerText = "";
           openPopup();
 
           try {
@@ -159,6 +161,7 @@
                 if (response.ok) {
                     // Form submission successful
                     document.getElementById("popupMessage").innerText = "Message sent successfully!";
+                    document.getElementById("closeBtn").innerText = "×";
                 } else {
                     // Handle errors
                     console.error('Failed to submit form:', response.status);
