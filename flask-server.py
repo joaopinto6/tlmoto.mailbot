@@ -18,15 +18,16 @@ def send_email():
 
     name = request.form['name']
     email = request.form['email']
+    phone = request.form['phone']
     message = request.form['message']
 
-    subject = f"New message from {name} - {email}"
-    body = message
+    body = f"New message from {name} - {email} - {phone}\n"
+    body += message
 
     em = EmailMessage()
     em['From'] = email_sender
     em['To'] = email_receiver
-    em['Subject'] = subject
+    em['Subject'] = "New message from Website"
     em.set_content(body)
 
     context = ssl.create_default_context()
