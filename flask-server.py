@@ -21,7 +21,7 @@ def send_email():
     phone = request.form['phone']
     message = request.form['message']
 
-    body = f"New message from {name} - {email} - {phone}\n"
+    body = f"New message from {name} - {email} - {phone}\n\n"
     body += message
 
     em = EmailMessage()
