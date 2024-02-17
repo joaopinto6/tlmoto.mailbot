@@ -1,10 +1,12 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from email.message import EmailMessage
 import ssl
 import smtplib
 from decouple import config
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def route():
