@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Signup</title>
+</head>
+<body>
+
+<h2>Subscribe to Our Newsletter</h2>
+
+<form id="newsletterForm">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="Email" required>
+    <button type="submit">Subscribe</button>
+</form>
+
+<script>
+document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var email = document.getElementById('email').value;
+    if (email.trim() !== '') {
+        var url = 'https://script.google.com/macros/s/AKfycbzGX7rhxmR6IHxh6YCp1Mp-DrGw_cihKYlQtzgg-L-x6Y0RCOHacTrYSVvWqJnfFL1v/exec';
+        var formData = new FormData(document.getElementById("newsletterForm"));
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Subscription successful!');
+            } else {
+                alert('Subscription failed. Please try again later.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Subscription failed. Please try again later.');
+        });
+    } else {
+        alert('Please enter a valid email address.');
+    }
+});
+</script>
+
+</body>
+</html>
